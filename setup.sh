@@ -6,7 +6,7 @@ set -e # Exit immediately if a command exits with a non-zero status
 sudo apt update && sudo apt upgrade -y
 
 # Install my common packages
-sudo apt install -y git nvim curl zsh wget tmux unzip build-essential
+sudo apt install -y git neovim curl zsh wget tmux unzip build-essential
 
 # Install Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -35,3 +35,6 @@ else
   sudo chsh -s "$(which zsh)" "$USER"
   echo "Please restart WSL for changes to take effect."
 fi
+
+# Ensure that git clone'd .zshrc is in use
+rm ~/.zshrc && ln -s debian-config/.dotfiles/zsh/.zshrc ~/.zshrc
